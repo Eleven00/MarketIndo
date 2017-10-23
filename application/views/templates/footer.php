@@ -35,9 +35,10 @@
         </div>
     </div>
 </footer>
-</div>
-</body>
+
+
 <!--   Core JS Files   -->
+<script src="<?php echo base_url('assets');?>/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url('assets');?>/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url('assets');?>/js/core/popper.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url('assets');?>/js/core/bootstrap.min.js" type="text/javascript"></script>
@@ -48,16 +49,14 @@
 <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
 <script src="<?php echo base_url('assets');?>/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-<script src="<?php echo base_url('assets');?>/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
 <script src="<?php echo base_url('assets');?>/js/eleven.js" type="text/javascript"></script>
-<script src="<?php echo base_url('assets');?>/js/jquery.js"></script>
 <script src="<?php echo base_url('assets');?>/js/bootstrap-treeview.js"></script>
-
+<script src="<?php echo base_url('assets');?>/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
 <script type="text/javascript">
-    // $(document).ready(function() {
-    //     // the body of this function is in assets/js/now-ui-kit.js
-    //     nowuiKit.initSliders();
-    // });
+    $(document).ready(function() {
+        // the body of this function is in assets/js/now-ui-kit.js
+        nowuiKit.initSliders();
+    });
 
     function scrollToDownload() {
 
@@ -135,5 +134,5 @@ $(window).on('load', function () {
     document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
 
 </script>
-
+</body>
 </html>

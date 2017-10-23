@@ -40,6 +40,9 @@
                                 <input type="text" class="form-control" placeholder="No.Telp..." required oninvalid="this.setCustomValidity('Tolong masukan no telpon anda')" oninput="setCustomValidity('')">
                             </div>
                             <div class="input-group form-group-no-border input-lg">
+                                <input type="email" class="form-control" placeholder="Email..." required oninvalid="this.setCustomValidity('Tolong masukan email anda')" oninput="setCustomValidity('')">
+                            </div>
+                            <div class="input-group form-group-no-border input-lg">
                                 <input type="text" class="form-control" placeholder="Username..." required oninvalid="this.setCustomValidity('Tolong masukan username anda')" oninput="setCustomValidity('')">
                             </div>
                             <div class="input-group form-group-no-border input-lg">
@@ -51,7 +54,7 @@
                         </div>
                         <div class="pull-left">
                             <h6>
-                                <a href="<?php echo site_url('login_u/register'); ?>" class="link">Daftar</a>
+                                <a href="<?php echo site_url('login_u'); ?>" class="link">Login</a>
                             </h6>
                         </div>
                         <div class="pull-right">

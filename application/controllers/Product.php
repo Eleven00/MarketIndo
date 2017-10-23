@@ -8,11 +8,24 @@ class Product extends CI_Controller {
 		parent::__construct();
 		$this->load->model('user_mo');
 	}
-	public function index()
+	public function index($id)
 	{
+		$data['barang'] = $this->user_mo->tampil_data('v_barang','kd_barang',$id);
 		$this->load->view('templates/header');
 		$this->load->view('FrontEnd/detail_produk');
 		$this->load->view('templates/footer');
+	}
+	public function detail($id)
+	{
+		$data['barang'] = $this->user_mo->select_one('v_barang','kd_barang',$id);
+        $id_foto =$data['barang']->id_foto;
+        $id_penjual = $data['barang']->id_penjual;
+        $data['cover'] = $this->user_mo->tampil_data('detail_foto','id_foto',$id_foto);
+        $data['penjual'] = $this->user_mo->select_one('v_penjual','id_penjual',$id_penjual);
+        $data['kategori'] = $this->user_mo->tampil_data('tbl_kategori');
+		$this->load->view('templates/header');
+		$this->load->view('FrontEnd/detail_produk',$data);
+		$this->load->view('templates/footer',$data);
 	}
 	public function penjual($id)
 	{

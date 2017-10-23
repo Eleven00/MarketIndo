@@ -1,4 +1,4 @@
-<ol class="breadcrumb">
+<ol class="breadcrumb" data-background-color="black">
     <li class="breadcrumb-item"><a href="#">Home</a></li>
     <li class="breadcrumb-item"><a href="#">Produk</a></li>
     <li class="breadcrumb-item active">Detail</li>
@@ -8,7 +8,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4>Nama Barang</h4>
+                    <h4>
+                        <?php echo($barang->nm_barang); ?>
+                    </h4>
                     <span>100% transaksi sukses dari 10 transaksi</span>
                     <hr>
                 </div>
@@ -17,11 +19,32 @@
                 <div class="col-sm-12 col-md-9">
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
-                            <img src="<?php echo base_url('assets')?>/img/avatar.jpg" class="img img-thumbnail">
-                            <div class="d-flex flex-row">
-                                <div class="p-2"><img src="<?php echo base_url('assets')?>/img/avatar.jpg" class="img img-thumbnail"></div>
-                                <div class="p-2"><img src="<?php echo base_url('assets')?>/img/avatar.jpg" class="img img-thumbnail"></div>
-                                <div class="p-2"><img src="<?php echo base_url('assets')?>/img/avatar.jpg" class="img img-thumbnail"></div>
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item active">
+                                        <img class="d-block" src="<?php echo base_url('assets/img/penjual').'/'.$barang->nm_pelanggan.$barang->foto_cover?>" alt="First slide">
+                                    </div>
+                                    <?php 
+                                        if($cover != null)
+                                        {
+                                            foreach($cover as $foto_cover)
+                                            {
+                                    ?>
+                                    <div class="carousel-item ">
+                                        <img class="d-block" src="<?php echo base_url('assets/img/penjual').'/'.$barang->nm_pelanggan.$foto_cover['foto'];?>" alt="<?php echo($barang->nm_barang); ?>">
+                                    </div>
+                                    <?php
+                                            }
+                                        }
+                                    ?>
+
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <i class="now-ui-icons arrows-1_minimal-left"></i>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <i class="now-ui-icons arrows-1_minimal-right"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-8">
@@ -39,37 +62,35 @@
                             <table class="table table-striped">
                                 <tr>
                                     <td><i class="fa fa-eye"></i> Lihat</td>
-                                    <td>4rb</td>
+                                    <td>
+                                        <?php echo $barang->dilihat; ?>
+                                    </td>
                                     <td>Berat</td>
-                                    <td>500 gram</td>
+                                    <td>
+                                        <?php echo $barang->berat; ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><i class="fa  fa-shopping-cart"></i> Terjual</td>
-                                    <td>100</td>
+                                    <td>
+                                        <?php echo $barang->terjual; ?>
+                                    </td>
                                     <td>Asuransi</td>
-                                    <td>Ya</td>
+                                    <td>
+                                        <?php echo $barang->asuransi; ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><i class="fa fa-tag"></i> Kondisi</td>
-                                    <td>Baru</td>
+                                    <td>
+                                        <?php echo $barang->kondisi; ?>
+                                    </td>
                                     <td>Pemesanan Min</td>
                                     <td>1</td>
                                 </tr>
 
                             </table>
-                            <h6>Deskripsi Produk</h6>
-                            <p>
-                                Lenovo S850 Garansi Resmi TRIO / TAM. Warna : Blue. Brand New In Box.
-                            </p>
-                            <p>
-                                GENERAL : 2G Network GSM 900 / 1800 / 1900 3G Network HSDPA 900 / 2100 SIM Dual SIM (Micro-SIM)
-                            </p>
-                            <p>
-                                BODY : Dimensions 141 x 71 x 8.2 mm (5.55 x 2.80 x 0.32 in) Weight 140 g (4.94 oz)
-                            </p>
-                            <p>
-                                DISPLAY : Type Capacitive touchscreen, 16M colors Size 720 x 1280 pixels, 5.0 inches (~294 ppi pixel density) Multitouch Yes, up to 5 fingers
-                            </p>
+                            <?php echo $barang->deskripsi; ?>
                         </div>
                     </div>
                     <hr>
@@ -94,7 +115,7 @@
                         </div>
                     </form>
 
-                    <div class="card ">
+                    <div class="card no-bo">
                         <div class="card-body ">
 
                             <div class="d-flex flex-row ">
@@ -111,7 +132,7 @@
                         </div>
                     </div>
                     <!-- end card -->
-                    <div class="card">
+                    <div class="card no-bo">
                         <div class="card-body">
 
                             <div class="d-flex flex-row">
@@ -130,17 +151,19 @@
                     <!-- end card -->
                 </div>
                 <div class="col-sm-12 col-md-3">
-                    <div class="card m-0">
+                    <div class="card m-0 no-bo">
                         <div class="card-body re">
                             <div class="harga text-center">
-                                <h4 style="color: red;margin-bottom: 0;">Rp. 15.000</h4>
+                                <h4 style="color: red;margin-bottom: 0;">Rp.
+                                    <?php echo number_format($barang->harga,0,'','.'); ?>
+                                </h4>
                                 <i><small>Harga dapat beubah </small></i>
                             </div>
                         </div>
                     </div>
                     <!-- end card -->
                     <a href="" class="btn btn-primary btn-block"><i class="fa fa-opencart"></i> Beli</a>
-                    <div class="card">
+                    <div class="card no-bo">
                         <div class="card-header">
                             Informasi Penjual
                         </div>
@@ -150,8 +173,8 @@
                                     <img src="<?php echo base_url('assets')?>/img/lo.png">
                                 </div>
                                 <div class="nm-seller">
-                                    <a href="<?php echo site_url('product/penjual/1') ?>"><b>Upin</b></a>
-                                    <br><span>DKI Jakarta</span>
+                                    <a href="<?php echo site_url('product/penjual/1') ?>"><b><?php echo $asa = ($barang->nm_toko == null) ? $barang->nm_pelanggan : $barang->nm_toko ; ?></b></a>
+                                    <br><span><?php echo($penjual->kota); ?></span>
                                 </div>
 
                                 <button class="btn btn-default btn-round">Kirim Pesan</button>
@@ -183,160 +206,34 @@
         <div class="row">
             <div class="col-md-12">
                 <h6>Kategori</h6>
-                <div class="card-group">
+                <?php
+                    $kol = 0;
+                    foreach($kategori as $kate)
+                    {
+                        if($kol==0)
+                        {
+                            echo '<div class="card-group">';
+                        }
+                        if($kol<4)
+                        {
+                ?>
                     <div class="card c">
                         <div class="card-body d d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
+                            <img src="<?php echo base_url('assets/img/kategori').$kate['icon_kat'];?>" class="img img-thumbnail">
+                            <a href=""><a href=""><?php echo $kate['nm_kategori']; ?></a></a>
                         </div>
                     </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-group">
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-group">
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-group">
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                    <div class="card c">
-                        <div class="card-body d">
-                            <img src="<?php echo base_url('assets')?>/img/icon_fashion_woman.png" class="img img-thumbnail">
-                            <a href=""><a href="">Fashion</a></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <?php 
+                            
+                        }
+                        else{
+                            $kol = 0;
+                            echo '</div>';
+                        }
+                        echo $kate['nm_kategori'];
+                        $kol++;
+                    }
+                ?>
         </div>
     </div>
     <!-- end of container-fluid -->

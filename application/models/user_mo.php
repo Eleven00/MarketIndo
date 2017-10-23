@@ -22,6 +22,11 @@ class User_mo extends CI_Model {
 			return $data->result_array();
 		}
 	}
+	public function select_one($tabel='',$kolom='',$nilai='')
+	{
+		$data = $this->db->query("select * from $tabel where $kolom='$nilai'");
+			return $data->row();
+	}
 	public function tambah_data($tabel,$data)
 	{
 		$data = $this->db->insert($tabel,$data);
